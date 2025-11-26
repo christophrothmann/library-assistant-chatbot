@@ -1,6 +1,6 @@
 Rothmann, Christoph, 22411549
 
-Bibliotheksassistent für die Buchausleihe
+Goleo - Der Bibliotheksassistent für die Buchausleihe
 
 https://mygit.th-deg.de/cr29549/sas-de-ws-25-26.git
 

@@ -1,0 +1,92 @@
+[
+  {
+    "title": "Quantenphysik für Dummies",
+    "author": "Holzner, Steven",
+    "summary": "Eine verständliche Einführung in die Quantenphysik.",
+    "available_from": "",
+    "floor": 2,
+    "shelf_name": "Physik-A",
+    "shelf_height": 3
+  },
+  {
+    "title": "Der Hobbit",
+    "author": "Tolkien, J.R.R.",
+    "summary": "Die Vorgeschichte zum Herrn der Ringe.",
+    "available_from": "2025-11-30",
+    "floor": 1,
+    "shelf_name": "Fantasy-B",
+    "shelf_height": 2
+  },
+  {
+    "title": "Clean Code",
+    "author": "Martin, Robert C.",
+    "summary": "Ein Handbuch für agile Software-Handwerkskunst.",
+    "available_from": "",
+    "floor": 3,
+    "shelf_name": "Informatik-C",
+    "shelf_height": 4
+  },
+  {
+    "title": "Design Patterns",
+    "author": "Gamma, Erich et al.",
+    "summary": "Elemente wiederverwendbarer objektorientierter Software.",
+    "available_from": "2025-12-05",
+    "floor": 3,
+    "shelf_name": "Informatik-C",
+    "shelf_height": 4
+  },
+  {
+    "title": "Eine kurze Geschichte der Zeit",
+    "author": "Hawking, Stephen",
+    "summary": "Ein populärwissenschaftliches Buch über Kosmologie.",
+    "available_from": "",
+    "floor": 2,
+    "shelf_name": "Physik-A",
+    "shelf_height": 5
+  },
+  {
+    "title": "Faust. Der Tragödie erster Teil",
+    "author": "Goethe, Johann Wolfgang von",
+    "summary": "Das bedeutendste Werk der deutschen Literatur.",
+    "available_from": "",
+    "floor": 1,
+    "shelf_name": "Literatur-D",
+    "shelf_height": 2
+  },
+  {
+    "title": "1984",
+    "author": "Orwell, George",
+    "summary": "Ein dystopischer Roman über einen totalitären Überwachungsstaat.",
+    "available_from": "2025-11-25",
+    "floor": 1,
+    "shelf_name": "Literatur-D",
+    "shelf_height": 3
+  },
+  {
+    "title": "Python Crash Course",
+    "author": "Matthes, Eric",
+    "summary": "Eine hands-on, projektbasierte Einführung in das Programmieren.",
+    "available_from": "",
+    "floor": 3,
+    "shelf_name": "Informatik-E",
+    "shelf_height": 1
+  },
+  {
+    "title": "Sapiens: Eine kurze Geschichte der Menschheit",
+    "author": "Harari, Yuval Noah",
+    "summary": "Ein Buch über die Geschichte der Menschheit.",
+    "available_from": "",
+    "floor": 2,
+    "shelf_name": "Geschichte-F",
+    "shelf_height": 3
+  },
+  {
+    "title": "Der Alchemist",
+    "author": "Coelho, Paulo",
+    "summary": "Die Geschichte eines andalusischen Hirten, der auf Reisen geht.",
+    "available_from": "2025-12-01",
+    "floor": 1,
+    "shelf_name": "Literatur-G",
+    "shelf_height": 2
+  }
+]

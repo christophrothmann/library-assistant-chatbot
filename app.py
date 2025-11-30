@@ -1,4 +1,4 @@
-from services.text_2_speech import text_2_speech
+from services.intent_classifier import classify_intent
 from services.buchsuche import buchsuche
 from services.regalsuche import regalsuche
 from services.reservieren import reservieren
@@ -74,6 +74,15 @@ def main():
             return
         
         st.session_state.messages.append({"role": "user", "content": user_text})
+
+        # If no flow is active, try to classify intent
+        if not st.session_state.get("current_flow"):
+            classified_intent = classify_intent(user_text)
+            # Only switch if a valid intent is found (assuming classifier always returns something, 
+            # but we might want to handle 'None' if we had a fallback, 
+            # currently it forces one of the known intents)
+            if classified_intent:
+                st.session_state.current_flow = classified_intent
 
         # Dispatch to the active flow
         if st.session_state.get("current_flow") == "verfuegbarkeit_pruefen":

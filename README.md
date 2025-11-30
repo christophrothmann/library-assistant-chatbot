@@ -15,7 +15,9 @@ Eine weitere Funktion ist das Suchen eines Buches anhand eines sich im Buch befi
 
 # Installation
 
+```bash
 pip install -r requirements.txt
+```
 
 Weitere Beschreibungen
 
@@ -28,5 +30,19 @@ Verwendete Versionen:
 - elevenlabs 0.1.1
 
 # Basic Usage
+Um streamlit lokal zu starten:
+
+```bash
+streamlit run app.py
+```
+
 
 Videolink Screencast: https://mygit.th-deg.de/cr29549/sas-de-ws-25-26/-/wikis/screencast
+
+# Weitere Kapitel
+
+Das Projekt wurde wie folgt strukturiert:
+
+- app.py - Hauptprogramm
+- assets - alle json Dateien (Buchbestand, Dialoge für die Use Cases)
+- services - alle usecases inkl. Spracheingabe als auch Sprachausgabe werden hier verarbeitet

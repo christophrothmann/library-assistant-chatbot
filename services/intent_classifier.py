@@ -91,6 +91,5 @@ def classify_intent(text):
     classifier = train_classifier()
     features = extract_features(text)
     classification = classifier.classify(features)
-    print(f"Initial text: {text} -> Classification: {json.dumps(classification, indent=4)}")
     return classification
 

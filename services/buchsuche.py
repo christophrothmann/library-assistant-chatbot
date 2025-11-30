@@ -37,7 +37,7 @@ def format_results(matches):
     
     result_str = ""
     for i, book in enumerate(matches, 1):
-        result_str += f"{i}. **{book['title']}** von {book['author']}\n"
+        result_str += f"{i}. **{book['title']}** von {book['author']}\n   _{book['summary']}_\n\n"
     return result_str
 
 def buchsuche(st, used_mic: bool = False):

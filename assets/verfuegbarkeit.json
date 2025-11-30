@@ -1,0 +1,23 @@
+{
+    "ask_title": [
+        "Gerne! Wie heißt das Buch oder der Autor, den du suchst?",
+        "Hi! Welches Buch suchst du?",
+        "Nenne mir bitte den Titel oder Autor des Buches.",
+        "Na klar, das mache ich gerne! Wie heißt denn das Buch oder der Autor?",
+        "Hi! Wonach suchst du?"
+    ],
+    "book_exists": [
+        "Das Buch '{title}' ist verfügbar.",
+        "'{title}' ist aktuell vorhanden. Wir haben mehrere Exemplare.",
+        "Ja, ein Exemplar von '{title}' existiert.",
+        "Das Buch '{title}' haben wir im Bestand.",
+        "Ja, '{title}' ist Teil unserer Bibliothek."
+    ],
+    "book_not_found": [
+        "Das Buch '{title}' konnte ich leider nicht in unserem Katalog finden.",
+        "Tut mir leid, '{title}' führen wir nicht.",
+        "Ich habe '{title}' nicht gefunden. Bist du sicher, dass der Titel stimmt?",
+        "Leider haben wir '{title}' nicht im Bestand.",
+        "Entschuldigung, aber '{title}' ist mir nicht bekannt."
+    ]
+}

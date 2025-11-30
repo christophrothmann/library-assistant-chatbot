@@ -40,6 +40,10 @@ def main():
             st.session_state.step = None
             st.session_state.context_book = None
 
+        if st.button(label="Neuer Chat beginnen", use_container_width=True):
+            reset_chat()
+            st.rerun()    
+
         if st.button("Verfügbarkeitsstatus prüfen", use_container_width=True):
             reset_chat()
             st.session_state.current_flow = "verfuegbarkeit_pruefen"

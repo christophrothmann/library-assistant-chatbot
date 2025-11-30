@@ -47,25 +47,25 @@ def main():
         if st.button("Verfügbarkeitsstatus prüfen", use_container_width=True):
             reset_chat()
             st.session_state.current_flow = "verfuegbarkeit_pruefen"
-            verfuegbarkeit_pruefen(st, used_mic=True)
+            verfuegbarkeit_pruefen(st)
             st.rerun()
             
         if st.button("Buch reservieren", use_container_width=True):
             reset_chat()
             st.session_state.current_flow = "reservieren"
-            reservieren(st, used_mic=True)
+            reservieren(st)
             st.rerun()
             
         if st.button("Buch lokalisieren", use_container_width=True):
             reset_chat()
             st.session_state.current_flow = "regalsuche"
-            regalsuche(st, used_mic=True)
+            regalsuche(st)
             st.rerun()
             
         if st.button("Texttreffer in Büchern", use_container_width=True):
             reset_chat()
             st.session_state.current_flow = "buchsuche"
-            buchsuche(st, used_mic=True)
+            buchsuche(st)
             st.rerun()
 
     # Helper to process user input

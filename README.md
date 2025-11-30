@@ -24,7 +24,9 @@ Verwendete Versionen:
 - Python 3.13.5
 - streamlit 1.51.0
 - nltk 3.9.2
+- speechrecognition 3.10.0
+- elevenlabs 0.1.1
 
 # Basic Usage
 
-...
+Videolink Screencast: https://mygit.th-deg.de/cr29549/sas-de-ws-25-26/-/wikis/screencast

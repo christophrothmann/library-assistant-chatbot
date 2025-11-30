@@ -1,0 +1,18 @@
+{
+    "ask_keyword": [
+        "Zu welchem Thema suchst du ein Buch?",
+        "Nenne mir ein Stichwort oder Thema, das dich interessiert.",
+        "Wonach soll ich für dich suchen? (z.B. 'Marketing', 'Getriebe')",
+        "Welches Thema beschäftigt dich gerade?"
+    ],
+    "results_found": [
+        "Ich habe folgende Bücher dazu gefunden:\n{results}",
+        "Schau mal, diese Bücher könnten passen:\n{results}",
+        "Hier sind einige Treffer für dich:\n{results}"
+    ],
+    "no_results": [
+        "Leider habe ich keine Bücher zu '{keyword}' gefunden.",
+        "Zu diesem Thema habe ich aktuell nichts im Bestand.",
+        "Entschuldigung, aber unter '{keyword}' konnte ich nichts finden."
+    ]
+}

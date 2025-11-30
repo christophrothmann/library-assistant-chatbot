@@ -1,0 +1,31 @@
+{
+    "ask_title": [
+        "Welches Buch möchtest du reservieren?",
+        "Nenne mir bitte den Titel des Buches, das du reservieren möchtest.",
+        "Für welches Buch soll ich eine Reservierung vornehmen?"
+    ],
+    "book_not_found": [
+        "Das Buch '{title}' konnte ich leider nicht finden.",
+        "Tut mir leid, '{title}' ist nicht in unserem Bestand."
+    ],
+    "confirm_available": [
+        "Das Buch '{title}' ist verfügbar. Ich kann es dir ab heute ({start_date}) für 3 Tage bis zum {end_date} reservieren. Möchtest du das bestätigen?",
+        "Gute Nachrichten! '{title}' ist da. Soll ich es dir von heute ({start_date}) bis {end_date} reservieren?"
+    ],
+    "confirm_unavailable": [
+        "Das Buch '{title}' ist aktuell ausgeliehen. Es wäre ab dem {start_date} wieder frei. Soll ich es dir ab dann für 3 Tage bis zum {end_date} reservieren?",
+        "'{title}' ist momentan nicht da. Der nächste freie Termin ist ab {start_date}. Soll ich es bis {end_date} für dich reservieren?"
+    ],
+    "success": [
+        "Alles klar, ich habe '{title}' für dich reserviert. Bitte hole es rechtzeitig ab!",
+        "Reservierung bestätigt! '{title}' ist für dich vom {start_date} bis {end_date} geblockt."
+    ],
+    "cancel": [
+        "Okay, ich habe die Reservierung abgebrochen. Beginne einen neuen Chat",
+        "Gut, dann reserviere ich das Buch nicht. Beginne einen neuen Chat."
+    ],
+    "clarify_confirmation": [
+        "Bitte antworte mit Ja oder Nein.",
+        "Ich habe dich nicht verstanden. Möchtest du reservieren? (Ja/Nein)"
+    ]
+}

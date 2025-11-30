@@ -1,0 +1,16 @@
+{
+    "ask_title": [
+        "Welches Buch möchtest du finden?",
+        "Nenne mir bitte den Titel des Buches, das du suchst.",
+        "Für welches Buch soll ich den Standort heraussuchen?"
+    ],
+    "book_not_found": [
+        "Das Buch '{title}' konnte ich leider nicht finden.",
+        "Tut mir leid, '{title}' ist nicht in unserem Bestand und hat daher keinen Standort."
+    ],
+    "found_location": [
+        "Das Buch '{title}' steht im {floor}. Stock, Regal '{shelf_name}', Regalboden {shelf_height}.",
+        "Du findest '{title}' im {floor}. OG, im Regal '{shelf_name}' auf Höhe {shelf_height}.",
+        "Gehe in den {floor}. Stock. Dort steht '{title}' im Regal '{shelf_name}', Fach {shelf_height}."
+    ]
+}

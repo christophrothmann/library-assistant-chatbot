@@ -1,8 +1,6 @@
-
 import json
 import os
 import random
-from services.text_2_speech import text_2_speech
 
 def load_json(filepath):
     """Loads a JSON file."""

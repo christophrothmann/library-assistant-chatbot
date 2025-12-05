@@ -1,4 +1,3 @@
-from services.text_2_speech import text_2_speech
 import json
 import os
 import random
@@ -65,7 +64,7 @@ def verfuegbarkeit_pruefen(st, used_mic: bool = False):
             response = check_existence_logic(user_text, books_data, availability_flow)
             st.session_state.messages.append({"role": "assistant", "content": response})
             if used_mic:
-                text_2_speech(response)
+                st.session_state.audio_to_play = response
             
             # End flow after checking existence
             st.session_state.availability_step = None

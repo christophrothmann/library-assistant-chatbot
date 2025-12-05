@@ -2,7 +2,6 @@ import json
 import os
 import random
 from datetime import datetime, timedelta
-from services.text_2_speech import text_2_speech
 
 def load_json(filepath):
     """Loads a JSON file."""
@@ -98,14 +97,14 @@ def reservieren(st, used_mic: bool = False):
                 msg = msg_template.format(title=found_book['title'], start_date=start_str, end_date=end_str)
                 st.session_state.messages.append({"role": "assistant", "content": msg})
                 if used_mic:
-                    text_2_speech(msg)
+                    st.session_state.audio_to_play = msg
                 
             else:
                 # Book not found
                 msg = random.choice(dialogue_flow['book_not_found']).format(title=user_text)
                 st.session_state.messages.append({"role": "assistant", "content": msg})
                 if used_mic:
-                    text_2_speech(msg)
+                    st.session_state.audio_to_play = msg
                 # Reset or ask again? Let's stay in ask_title or exit. 
                 # For simplicity, let's reset flow or just ask again. 
                 # The user might want to try another title.
@@ -141,7 +140,7 @@ def reservieren(st, used_mic: bool = False):
                 )
                 st.session_state.messages.append({"role": "assistant", "content": msg})
                 if used_mic:
-                    text_2_speech(msg)
+                    st.session_state.audio_to_play = msg
                 
                 # End flow
                 st.session_state.reservation_step = None
@@ -152,7 +151,7 @@ def reservieren(st, used_mic: bool = False):
                 msg = random.choice(dialogue_flow['cancel'])
                 st.session_state.messages.append({"role": "assistant", "content": msg})
                 if used_mic:
-                    text_2_speech(msg)
+                    st.session_state.audio_to_play = msg
                 
                 # End flow
                 st.session_state.reservation_step = None
@@ -163,4 +162,4 @@ def reservieren(st, used_mic: bool = False):
                 msg = random.choice(dialogue_flow['clarify_confirmation'])
                 st.session_state.messages.append({"role": "assistant", "content": msg})
                 if used_mic:
-                    text_2_speech(msg)
+                    st.session_state.audio_to_play = msg

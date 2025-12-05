@@ -4,10 +4,12 @@ from services.regalsuche import regalsuche
 from services.reservieren import reservieren
 from services.verfuegbarkeit import verfuegbarkeit_pruefen
 from services.speech_2_text import listen_and_transcribe
+from services.text_2_speech import generate_audio, play_audio
 import streamlit as st
 import json
 import os
 import datetime
+import time
 from datetime import timedelta
 
 
@@ -30,6 +32,9 @@ def main():
         
     if "context_book" not in st.session_state:
         st.session_state.context_book = None
+        
+    if "audio_to_play" not in st.session_state:
+        st.session_state.audio_to_play = None
 
     with st.sidebar:
         st.header("Schnellaktionen")
@@ -67,6 +72,8 @@ def main():
             st.session_state.current_flow = "buchsuche"
             buchsuche(st)
             st.rerun()
+        st.divider()
+        st.checkbox("Audioausgabe aktivieren", key="audio_enabled")
 
     # Helper to process user input
     def process_input(user_text, used_mic: bool = False):
@@ -85,14 +92,16 @@ def main():
                 st.session_state.current_flow = classified_intent
 
         # Dispatch to the active flow
+        should_speak = st.session_state.get("audio_enabled", False)
+        
         if st.session_state.get("current_flow") == "verfuegbarkeit_pruefen":
-             verfuegbarkeit_pruefen(st, used_mic)
+             verfuegbarkeit_pruefen(st, should_speak)
         elif st.session_state.get("current_flow") == "reservieren":
-             reservieren(st, used_mic)
+             reservieren(st, should_speak)
         elif st.session_state.get("current_flow") == "regalsuche":
-             regalsuche(st, used_mic)
+             regalsuche(st, should_speak)
         elif st.session_state.get("current_flow") == "buchsuche":
-             buchsuche(st, used_mic)
+             buchsuche(st, should_speak)
         
         
     # --- Welcome Screen ---
@@ -101,6 +110,13 @@ def main():
         Hallo! Ich bin **Goleo**, dein Assistent für die Bibliothek.
         Wähle eine Aktion aus der Sidebar, um zu starten oder verwende die Text- /Spracheingabe.
         """)
+
+    # --- Pre-calculate Audio (Synchronization) ---
+    audio_bytes_to_play = None
+    if st.session_state.get("audio_to_play"):
+        with st.spinner("Generiere Antwort..."):
+            audio_bytes_to_play = generate_audio(st.session_state.audio_to_play)
+        st.session_state.audio_to_play = None
 
     # --- Chat History Display ---
     for message in st.session_state.messages:
@@ -135,6 +151,10 @@ def main():
             if transcribed_text:
                 process_input(transcribed_text, used_mic=True)
                 st.rerun()
+
+    # --- Audio Playback (Synchronized) ---
+    if audio_bytes_to_play:
+        play_audio(audio_bytes_to_play)
 
 if __name__ == "__main__":
     main()

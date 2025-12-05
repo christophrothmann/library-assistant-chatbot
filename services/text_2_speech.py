@@ -13,13 +13,19 @@ def init_elevenlabs():
     )
 
 
-def text_2_speech(text: str) -> None:
+def generate_audio(text: str) -> bytes:
     elevenlabs = init_elevenlabs()
-
     audio = elevenlabs.text_to_speech.convert(
         text=text,
         voice_id="v3V1d2rk6528UrLKRuy8",
         model_id="eleven_multilingual_v2",
         output_format="mp3_44100_128",
     )
-    play(audio)
+    return b"".join(audio)
+
+def play_audio(audio_bytes: bytes) -> None:
+    play(audio_bytes)
+
+def text_2_speech(text: str) -> None:
+    audio_bytes = generate_audio(text)
+    play_audio(audio_bytes)

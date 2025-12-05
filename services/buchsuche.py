@@ -1,7 +1,6 @@
 import json
 import os
 import random
-from services.text_2_speech import text_2_speech
 
 def load_json(filepath):
     """Loads a JSON file."""
@@ -80,7 +79,7 @@ def buchsuche(st, used_mic: bool = False):
             st.session_state.messages.append({"role": "assistant", "content": response})
             
             if used_mic:
-                text_2_speech(response)
+                st.session_state.audio_to_play = response
             
             # End flow after showing results
             st.session_state.buchsuche_step = None

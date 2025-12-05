@@ -10,6 +10,7 @@ import json
 
 # Download the 'punkt' tokenizer model (if you haven't already)
 nltk.download('punkt', quiet=True, raise_on_error=True)
+nltk.download('punkt_tab', quiet=True, raise_on_error=True)
 
 def extract_features(text):
     """
@@ -27,36 +28,17 @@ def extract_features(text):
 
 # Our training data for a simple Mensa Assistant
 # from example dialogs!
-training_data = [
-    # Use Case 1: Verfügbarkeit prüfen
-    ("Verfügbarkeit Kauffman - Werbepsychologie", "verfuegbarkeit_pruefen"),
-    ("Hallo Goleo. Ich suche ein Buch für meine Hausarbeit in Maschinenbau. Kannst du schauen, ob es da ist?", "verfuegbarkeit_pruefen"),
-    ("Dubbel", "verfuegbarkeit_pruefen"),
-    ("Ist Sozialpsychologie von Aronson in der 6. Auflage da?", "verfuegbarkeit_pruefen"),
-    ("Ich suche Technische Mechnik 1", "verfuegbarkeit_pruefen"),
-    ("Gibt es das Mathe-Buch von Papula noch?", "verfuegbarkeit_pruefen"),
+import os
 
-    # Use Case 2: Buch Reservierung
-    ("Konsumentenverhalten von Kroeber-Riel", "reservieren"),
-    ("Ich brauche das Physik-Buch von Tipler", "reservieren"),
-    ("Kann ich den Bortz - Statistik ab morgen für 3 Tage haben?", "reservieren"),
-    ("Kostet das Reservieren von Büchern Geld?", "reservieren"),
-    ("Dann bitte Werkstoffkunde von Bargel", "reservieren"),
-    ("Storniere meine Reservierung für Wirtschaftsinformatik", "reservieren"),
+def load_training_data():
+    file_path = os.path.join("assets", "training_data.json")
+    try:
+        with open(file_path, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except FileNotFoundError:
+        return []
 
-    # Use Case 3: Regalsuche
-    ("Ich bin gerade in der Bibliothek, aber ich finde das Regal für Maschinenbau nicht", "regalsuche"),
-    ("Ich suche den Hering", "regalsuche"),
-    ("Wo steht Psychologie von Zimbardo?", "regalsuche"),
-    ("Standorte für: Kostenrechnung (Coenenberg) und Bilanzierung (Baetge)", "regalsuche"),
-
-    # Use Case 4: Buchsuche (Inhalt & Thema)
-    ("Welches Buch enthält aktuelle Definitionen zu Nudging im Kontext Marketing?", "buchsuche"),
-    ("Ich muss eine Arbeit über Getriebe schreiben. Welche Bücher sind da gut für Anfänger?", "buchsuche"),
-    ("Ich suche was über Metalle und so", "buchsuche"),
-    ("Eher für Maschinenbau. Wie hart die sind und so", "buchsuche"),
-    ("In welchem Buch finde ich das 4-Ohren-Modell?", "buchsuche")
-]
+training_data = load_training_data()
 
 # Global variable to store the trained classifier
 _classifier = None

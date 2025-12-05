@@ -1,0 +1,86 @@
+[
+    [
+        "Verfügbarkeit Kauffman - Werbepsychologie",
+        "verfuegbarkeit_pruefen"
+    ],
+    [
+        "Hallo Goleo. Ich suche ein Buch für meine Hausarbeit in Maschinenbau. Kannst du schauen, ob es da ist?",
+        "verfuegbarkeit_pruefen"
+    ],
+    [
+        "Dubbel",
+        "verfuegbarkeit_pruefen"
+    ],
+    [
+        "Ist Sozialpsychologie von Aronson in der 6. Auflage da?",
+        "verfuegbarkeit_pruefen"
+    ],
+    [
+        "Ich suche Technische Mechnik 1",
+        "verfuegbarkeit_pruefen"
+    ],
+    [
+        "Gibt es das Mathe-Buch von Papula noch?",
+        "verfuegbarkeit_pruefen"
+    ],
+    [
+        "Konsumentenverhalten von Kroeber-Riel",
+        "reservieren"
+    ],
+    [
+        "Ich brauche das Physik-Buch von Tipler",
+        "reservieren"
+    ],
+    [
+        "Kann ich den Bortz - Statistik ab morgen für 3 Tage haben?",
+        "reservieren"
+    ],
+    [
+        "Kostet das Reservieren von Büchern Geld?",
+        "reservieren"
+    ],
+    [
+        "Dann bitte Werkstoffkunde von Bargel",
+        "reservieren"
+    ],
+    [
+        "Storniere meine Reservierung für Wirtschaftsinformatik",
+        "reservieren"
+    ],
+    [
+        "Ich bin gerade in der Bibliothek, aber ich finde das Regal für Maschinenbau nicht",
+        "regalsuche"
+    ],
+    [
+        "Ich suche den Hering",
+        "regalsuche"
+    ],
+    [
+        "Wo steht Psychologie von Zimbardo?",
+        "regalsuche"
+    ],
+    [
+        "Standorte für: Kostenrechnung (Coenenberg) und Bilanzierung (Baetge)",
+        "regalsuche"
+    ],
+    [
+        "Welches Buch enthält aktuelle Definitionen zu Nudging im Kontext Marketing?",
+        "buchsuche"
+    ],
+    [
+        "Ich muss eine Arbeit über Getriebe schreiben. Welche Bücher sind da gut für Anfänger?",
+        "buchsuche"
+    ],
+    [
+        "Ich suche was über Metalle und so",
+        "buchsuche"
+    ],
+    [
+        "Eher für Maschinenbau. Wie hart die sind und so",
+        "buchsuche"
+    ],
+    [
+        "In welchem Buch finde ich das 4-Ohren-Modell?",
+        "buchsuche"
+    ]
+]

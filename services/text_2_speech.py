@@ -3,13 +3,13 @@ import edge_tts
 import pygame
 import os
 
-# Voice Configuration
+
 VOICE = "de-DE-AmalaNeural"
 RATE = "+15%"
-PITCH = "-2Hz" # Adjusted slightly from snippet for better neutrality, or keep user's preferences? User had +15%, -5Hz. I'll stick close to user's snippet but maybe slightly clearer. Let's use user's: +15%, -5Hz.
+PITCH = "-2Hz" 
 
 async def _generate_audio_async(text: str, output_file: str) -> None:
-    communicate = edge_tts.Communicate(text, voice=VOICE, rate="+15%", pitch="-5Hz")
+    communicate = edge_tts.Communicate(text, voice=VOICE, rate=RATE, pitch=PITCH)
     await communicate.save(output_file)
 
 def generate_audio(text: str) -> str:
@@ -62,6 +62,7 @@ def text_2_speech(text: str) -> None:
     """
     file_path = generate_audio(text)
     play_audio(file_path)
+    os.remove(file_path)
 
 
 

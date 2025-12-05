@@ -14,7 +14,7 @@ from datetime import timedelta
 
 
 # --- Configuration & Setup ---
-st.set_page_config(page_title="Goleo - Bibliotheksassistent", page_icon="📚")
+st.set_page_config(page_title="Goleo - Der Bibliotheksassistent", page_icon="./assets/goleo.png")
 
 # --- Main App ---
 def main():
@@ -112,10 +112,10 @@ def main():
         """)
 
     # --- Pre-calculate Audio (Synchronization) ---
-    audio_bytes_to_play = None
+    audio_path_to_play = None
     if st.session_state.get("audio_to_play"):
         with st.spinner("Generiere Antwort..."):
-            audio_bytes_to_play = generate_audio(st.session_state.audio_to_play)
+            audio_path_to_play = generate_audio(st.session_state.audio_to_play)
         st.session_state.audio_to_play = None
 
     # --- Chat History Display ---
@@ -153,8 +153,8 @@ def main():
                 st.rerun()
 
     # --- Audio Playback (Synchronized) ---
-    if audio_bytes_to_play:
-        play_audio(audio_bytes_to_play)
+    if audio_path_to_play:
+        play_audio(audio_path_to_play)
 
 if __name__ == "__main__":
     main()

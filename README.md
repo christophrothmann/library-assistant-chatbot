@@ -30,7 +30,9 @@ Verwendete Versionen:
 - elevenlabs 0.1.1
 
 # Basic Usage
-Um streamlit lokal zu starten:
+Schrittanleitung:
+1. Installationsscript ausführen (siehe weiter oben)
+2. Streamlitstarten:
 
 ```bash
 streamlit run app.py

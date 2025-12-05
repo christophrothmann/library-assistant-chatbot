@@ -45,6 +45,7 @@ def buchsuche(st, used_mic: bool = False):
     Manages the flow state and user interaction.
     """
     # Load Data
+    # Die "buecher_bestand.json" Datei wurde von KI generiert
     books_file = os.path.join("assets", "buecher_bestand.json")
     search_file = os.path.join("assets", "buchsuche.json")
     

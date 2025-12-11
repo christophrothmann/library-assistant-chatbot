@@ -1,16 +1,8 @@
-import json
 import os
 import random
 
-def load_json(filepath):
-    """Loads a JSON file."""
-    try:
-        with open(filepath, 'r', encoding='utf-8') as f:
-            return json.load(f)
-    except FileNotFoundError:
-        return {}
-    except json.JSONDecodeError:
-        return {}
+from services.utils import load_json
+
 
 def search_books(keyword, books_data):
     """
@@ -39,12 +31,11 @@ def format_results(matches):
         result_str += f"{i}. **{book['title']}** von {book['author']}\n   _{book['summary']}_\n\n"
     return result_str
 
-def buchsuche(st, used_mic: bool = False):
+def buchsuche(st, audio_required: bool = False):
     """
     Main Function after intent classification for 'Buchsuche'.
     Manages the flow state and user interaction.
     """
-    # Load Data
     # Die "buecher_bestand.json" Datei wurde von KI generiert
     books_file = os.path.join("assets", "buecher_bestand.json")
     search_file = os.path.join("assets", "buchsuche.json")
@@ -52,15 +43,43 @@ def buchsuche(st, used_mic: bool = False):
     books_data = load_json(books_file)
     search_flow = load_json(search_file)
 
-    # Initialize or retrieve state for this flow
     if "buchsuche_step" not in st.session_state or not st.session_state.messages:
+        
+        # Context Check
+        # If we came from intent classifier with input, use that as query.
+        initial_query = None
+        if st.session_state.messages and st.session_state.messages[-1]["role"] == "user":
+             initial_query = st.session_state.messages[-1]["content"]
+        
+        if initial_query:
+            matches = search_books(initial_query, books_data)
+            
+            if matches:
+                result_list = format_results(matches)
+                msg_template = random.choice(search_flow['results_found'])
+                response = msg_template.format(results=result_list)
+            else:
+                msg_template = random.choice(search_flow['no_results'])
+                response = msg_template.format(keyword=initial_query)
+            
+            st.session_state.messages.append({"role": "assistant", "content": response})
+            
+            if audio_required:
+                st.session_state.audio_to_play = response
+            
+       
+            st.session_state.buchsuche_step = None
+            st.session_state.current_flow = None
+            return
+
         st.session_state.buchsuche_step = "ask_keyword"
-        # Start the conversation
+        
         msg = random.choice(search_flow['ask_keyword'])
         st.session_state.messages.append({"role": "assistant", "content": msg})
+        if audio_required:
+             st.session_state.audio_to_play = msg
         return
 
-    # Process user input
     last_message = st.session_state.messages[-1]
     
     if last_message["role"] == "user":
@@ -79,7 +98,7 @@ def buchsuche(st, used_mic: bool = False):
             
             st.session_state.messages.append({"role": "assistant", "content": response})
             
-            if used_mic:
+            if audio_required:
                 st.session_state.audio_to_play = response
             
             # End flow after showing results

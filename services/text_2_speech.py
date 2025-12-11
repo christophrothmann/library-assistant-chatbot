@@ -1,8 +1,8 @@
 import asyncio
-import edge_tts
-import pygame
 import os
 
+import edge_tts
+import pygame
 
 VOICE = "de-DE-AmalaNeural"
 RATE = "+15%"
@@ -17,16 +17,14 @@ def generate_audio(text: str) -> str:
     Generates audio from text using Edge TTS and saves it to a temporary file.
     Returns the path to the saved file.
     """
-    # Ensure assets directory exists
     os.makedirs("assets", exist_ok=True)
     filename = "./assets/temp_audio.mp3"
     
-    # Remove existing file if it exists
     if os.path.exists(filename):
         try:
             os.remove(filename)
         except OSError:
-            pass # File might be in use, ignore for now
+            pass 
         
     try:
         asyncio.run(_generate_audio_async(text, filename))
@@ -51,14 +49,13 @@ def play_audio(file_path: str) -> None:
         while pygame.mixer.music.get_busy():
             pygame.time.Clock().tick(10)
             
-        # cleanup
         pygame.mixer.quit()
     except Exception as e:
         print(f"Error playing audio: {e}")
 
 def text_2_speech(text: str) -> None:
     """
-    Legacy wrapper.
+    Legacy wrapper. Wird in regalsuche.py verwendet
     """
     file_path = generate_audio(text)
     play_audio(file_path)

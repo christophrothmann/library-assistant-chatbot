@@ -1,8 +1,9 @@
+import json
 import random
+
 import nltk
 from nltk.tokenize import word_tokenize
-from collections import defaultdict
-import json
+
 #  sas-07-intent-classifier.py
 
 # Notiz von mir:
@@ -52,16 +53,13 @@ def train_classifier():
     if _classifier:
         return _classifier
 
-    # Create the feature sets
     feature_sets = [
         (extract_features(utterance), intent) 
         for (utterance, intent) in training_data
     ]
     
-    # Shuffle the feature sets for good measure
     random.shuffle(feature_sets)
     
-    # Train the Naive Bayes Classifier
     _classifier = nltk.NaiveBayesClassifier.train(feature_sets)
     return _classifier
 

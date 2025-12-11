@@ -1,6 +1,6 @@
 [
     [
-        "Verfügbarkeit Kauffman - Werbepsychologie",
+        "Verfügbarkeit \"Kauffman - Werbepsychologie\".",
         "verfuegbarkeit_pruefen"
     ],
     [
@@ -8,15 +8,11 @@
         "verfuegbarkeit_pruefen"
     ],
     [
-        "Dubbel",
+        "Ist \"Sozialpsychologie\" von Aronson in der 6. Auflage da?",
         "verfuegbarkeit_pruefen"
     ],
     [
-        "Ist Sozialpsychologie von Aronson in der 6. Auflage da?",
-        "verfuegbarkeit_pruefen"
-    ],
-    [
-        "Ich suche Technische Mechnik 1",
+        "Ich suche \"Technische Mechnik 1\".",
         "verfuegbarkeit_pruefen"
     ],
     [
@@ -28,11 +24,11 @@
         "reservieren"
     ],
     [
-        "Ich brauche das Physik-Buch von Tipler",
+        "Ich brauche das Physik-Buch von Tipler.",
         "reservieren"
     ],
     [
-        "Kann ich den Bortz - Statistik ab morgen für 3 Tage haben?",
+        "Kann ich den \"Bortz - Statistik\" ab morgen für 3 Tage haben?",
         "reservieren"
     ],
     [
@@ -40,47 +36,35 @@
         "reservieren"
     ],
     [
-        "Dann bitte Werkstoffkunde von Bargel",
+        "Storniere meine Reservierung für \"Wirtschaftsinformatik\". Brauche es doch nicht.",
         "reservieren"
     ],
     [
-        "Storniere meine Reservierung für Wirtschaftsinformatik",
-        "reservieren"
-    ],
-    [
-        "Ich bin gerade in der Bibliothek, aber ich finde das Regal für Maschinenbau nicht",
+        "Ich bin gerade in der Bibliothek, aber ich finde das Regal für Maschinenbau nicht. Es ist riesig hier.",
         "regalsuche"
     ],
     [
-        "Ich suche den Hering",
+        "Wo steht \"Psychologie\" von Zimbardo?",
         "regalsuche"
     ],
     [
-        "Wo steht Psychologie von Zimbardo?",
+        "Standorte für: \"Kostenrechnung\" (Coenenberg) und \"Bilanzierung\" (Baetge).",
         "regalsuche"
     ],
     [
-        "Standorte für: Kostenrechnung (Coenenberg) und Bilanzierung (Baetge)",
-        "regalsuche"
-    ],
-    [
-        "Welches Buch enthält aktuelle Definitionen zu Nudging im Kontext Marketing?",
+        "Welches Buch enthält aktuelle Definitionen zu \"Nudging\" im Kontext Marketing?",
         "buchsuche"
     ],
     [
-        "Ich muss eine Arbeit über Getriebe schreiben. Welche Bücher sind da gut für Anfänger?",
+        "Ich muss eine Arbeit über \"Getriebe\" schreiben. Welche Bücher sind da gut für Anfänger?",
         "buchsuche"
     ],
     [
-        "Ich suche was über Metalle und so",
+        "Ich suche was über Metalle und so.",
         "buchsuche"
     ],
     [
-        "Eher für Maschinenbau. Wie hart die sind und so",
-        "buchsuche"
-    ],
-    [
-        "In welchem Buch finde ich das 4-Ohren-Modell?",
+        "In welchem Buch finde ich das \"4-Ohren-Modell\"?",
         "buchsuche"
     ]
 ]

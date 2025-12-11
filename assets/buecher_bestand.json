@@ -1,92 +1,155 @@
 [
   {
-    "title": "Quantenphysik für Dummies",
-    "author": "Holzner, Steven",
-    "summary": "Eine verständliche Einführung in die Quantenphysik.",
-    "available_from": "2025-12-03",
+    "title": "Kauffman - Werbepsychologie",
+    "author": "Kauffman, R.",
+    "summary": "Grundlagen der Werbepsychologie und Wirkungsmodelle.",
+    "available_from": "",
     "floor": 2,
-    "shelf_name": "Physik-A",
-    "shelf_height": 3
-  },
-  {
-    "title": "Der Hobbit",
-    "author": "Tolkien, J.R.R.",
-    "summary": "Die Vorgeschichte zum Herrn der Ringe.",
-    "available_from": "2025-11-30",
-    "floor": 1,
-    "shelf_name": "Fantasy-B",
+    "shelf_name": "Psychologie-W",
     "shelf_height": 2
   },
   {
-    "title": "Clean Code",
-    "author": "Martin, Robert C.",
-    "summary": "Ein Handbuch für agile Software-Handwerkskunst.",
+    "title": "Dubbel - Taschenbuch für den Maschinenbau",
+    "author": "Grote, Karl-Heinrich; Feldhusen, Jörg",
+    "summary": "Das Standardwerk für den Maschinenbau. Umfassende Referenz.",
     "available_from": "",
-    "floor": 3,
-    "shelf_name": "Informatik-C",
-    "shelf_height": 4
+    "floor": 1,
+    "shelf_name": "Maschinenbau-M",
+    "shelf_height": 3
   },
   {
-    "title": "Design Patterns",
-    "author": "Gamma, Erich et al.",
-    "summary": "Elemente wiederverwendbarer objektorientierter Software.",
-    "available_from": "2025-12-09",
-    "floor": 3,
-    "shelf_name": "Informatik-C",
-    "shelf_height": 4
-  },
-  {
-    "title": "Eine kurze Geschichte der Zeit",
-    "author": "Hawking, Stephen",
-    "summary": "Ein populärwissenschaftliches Buch über Kosmologie.",
-    "available_from": "",
+    "title": "Sozialpsychologie",
+    "author": "Aronson, Elliot",
+    "summary": "Ein umfassendes Lehrbuch zur Sozialpsychologie.",
+    "available_from": "2025-11-23",
     "floor": 2,
-    "shelf_name": "Physik-A",
+    "shelf_name": "Psychologie-S",
+    "shelf_height": 4
+  },
+  {
+    "title": "Technische Mechanik 1",
+    "author": "Gross, Dietmar; Hauger, Werner",
+    "summary": "Statik - Band 1 der Reihe Technische Mechanik.",
+    "available_from": "",
+    "floor": 1,
+    "shelf_name": "Maschinenbau-T",
+    "shelf_height": 2
+  },
+  {
+    "title": "Mathematik für Ingenieure Band 1",
+    "author": "Papula, Lothar",
+    "summary": "Anschauliche Mathematik für Ingenieure und Naturwissenschaftler.",
+    "available_from": "2025-11-20",
+    "floor": 3,
+    "shelf_name": "Mathematik-P",
+    "shelf_height": 3
+  },
+  {
+    "title": "Konsumentenverhalten",
+    "author": "Kroeber-Riel, Werner",
+    "summary": "Verhaltenswissenschaftliche Grundlagen des Marketings.",
+    "available_from": "2025-11-30",
+    "floor": 2,
+    "shelf_name": "Wirtschaft-K",
+    "shelf_height": 3
+  },
+  {
+    "title": "Physik für Wissenschaftler und Ingenieure",
+    "author": "Tipler, Paul A.",
+    "summary": "Einführung in die Experimentalphysik.",
+    "available_from": "2025-12-05",
+    "floor": 3,
+    "shelf_name": "Physik-T",
     "shelf_height": 5
   },
   {
-    "title": "Faust. Der Tragödie erster Teil",
-    "author": "Goethe, Johann Wolfgang von",
-    "summary": "Das bedeutendste Werk der deutschen Literatur.",
-    "available_from": "",
-    "floor": 1,
-    "shelf_name": "Literatur-D",
+    "title": "Bortz - Statistik für Human- und Sozialwissenschaftler",
+    "author": "Bortz, Jürgen; Schuster, Christof",
+    "summary": "Standardwerk für Statistik in den Sozialwissenschaften.",
+    "available_from": "2025-12-13",
+    "floor": 2,
+    "shelf_name": "Statistik-B",
     "shelf_height": 2
   },
   {
-    "title": "1984",
-    "author": "Orwell, George",
-    "summary": "Ein dystopischer Roman über einen totalitären Überwachungsstaat.",
+    "title": "Werkstoffkunde",
+    "author": "Bargel, Hans-Jürgen",
+    "summary": "Lehrbuch zur Werkstoffkunde für Maschinenbau.",
     "available_from": "2025-11-25",
     "floor": 1,
-    "shelf_name": "Literatur-D",
+    "shelf_name": "Werkstoff-W",
+    "shelf_height": 2
+  },
+  {
+    "title": "Wirtschaftsinformatik",
+    "author": "Laudon, Kenneth C.",
+    "summary": "Einführung in die Wirtschaftsinformatik.",
+    "available_from": "2025-11-28",
+    "floor": 3,
+    "shelf_name": "Informatik-W",
+    "shelf_height": 4
+  },
+  {
+    "title": "Technisches Zeichnen",
+    "author": "Hering, Lutz",
+    "summary": "Grundlagen, Normen, Beispiele, Darstellende Geometrie.",
+    "available_from": "",
+    "floor": 1,
+    "shelf_name": "T-05",
+    "shelf_height": 2
+  },
+  {
+    "title": "Psychologie",
+    "author": "Zimbardo, Philip G.",
+    "summary": "Ein Standardwerk der Psychologie.",
+    "available_from": "",
+    "floor": 0,
+    "shelf_name": "P-02",
     "shelf_height": 3
   },
   {
-    "title": "Python Crash Course",
-    "author": "Matthes, Eric",
-    "summary": "Eine hands-on, projektbasierte Einführung in das Programmieren.",
+    "title": "Einführung in die Kostenrechnung",
+    "author": "Coenenberg, Adolf G.",
+    "summary": "Grundlagen der Kosten- und Leistungsrechnung.",
     "available_from": "",
-    "floor": 3,
-    "shelf_name": "Informatik-E",
-    "shelf_height": 1
+    "floor": 0,
+    "shelf_name": "W-08",
+    "shelf_height": 2
   },
   {
-    "title": "Sapiens: Eine kurze Geschichte der Menschheit",
-    "author": "Harari, Yuval Noah",
-    "summary": "Ein Buch über die Geschichte der Menschheit.",
+    "title": "Bilanzierung",
+    "author": "Baetge, Jörg",
+    "summary": "Handelsrechtliche und steuerrechtliche Bilanzierung.",
+    "available_from": "",
+    "floor": 0,
+    "shelf_name": "W-09",
+    "shelf_height": 2
+  },
+  {
+    "title": "Nudge: Wie man kluge Entscheidungen anstößt",
+    "author": "Thaler, Richard H.; Sunstein, Cass R.",
+    "summary": "Über Nudging im Kontext Marketing und Entscheidungsfindung.",
     "available_from": "",
     "floor": 2,
-    "shelf_name": "Geschichte-F",
+    "shelf_name": "Wirtschaft-N",
     "shelf_height": 3
   },
   {
-    "title": "Der Alchemist",
-    "author": "Coelho, Paulo",
-    "summary": "Die Geschichte eines andalusischen Hirten, der auf Reisen geht.",
-    "available_from": "2025-12-01",
+    "title": "Maschinenelemente",
+    "author": "Niemann, Gustav",
+    "summary": "Konstruktion und Berechnung von Verbindungen, Lagern, Wellen.",
+    "available_from": "",
     "floor": 1,
-    "shelf_name": "Literatur-G",
-    "shelf_height": 2
+    "shelf_name": "Maschinenbau-N",
+    "shelf_height": 4
+  },
+  {
+    "title": "Miteinander reden: 1",
+    "author": "Schulz von Thun, Friedemann",
+    "summary": "Störungen und Klärungen. Das 4-Ohren-Modell.",
+    "available_from": "",
+    "floor": 2,
+    "shelf_name": "Psychologie-S",
+    "shelf_height": 1
   }
 ]

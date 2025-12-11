@@ -1,7 +1,7 @@
 import os
 import random
 
-from services.utils import load_json, find_book_in_text
+from services.utils import load_json, get_initial_context, send_response
 
 
 def check_existence_logic(title_query, books_data, flow_data):
@@ -36,17 +36,12 @@ def verfuegbarkeit_pruefen(st, audio_required: bool = False):
     availability_flow = load_json(availability_file)
 
     if "availability_step" not in st.session_state or not st.session_state.messages:
-        initial_book_context = None
-        if st.session_state.messages and st.session_state.messages[-1]["role"] == "user":
-             user_text = st.session_state.messages[-1]["content"]
-             initial_book_context = find_book_in_text(user_text, books_data)
+        initial_book_context = get_initial_context(st, books_data)
         
         if initial_book_context:
             st.session_state.availability_step = "check_existence"
             response = check_existence_logic(initial_book_context['title'], books_data, availability_flow)
-            st.session_state.messages.append({"role": "assistant", "content": response})
-            if audio_required:
-                st.session_state.audio_to_play = response
+            send_response(st, response, audio_required)
             
             st.session_state.availability_step = None
             st.session_state.current_flow = None
@@ -54,11 +49,7 @@ def verfuegbarkeit_pruefen(st, audio_required: bool = False):
         else:
             st.session_state.availability_step = "ask_title"
             msg = random.choice(availability_flow['ask_title'])
-            st.session_state.messages.append({"role": "assistant", "content": msg})
-            if audio_required:
-                pass
-            if audio_required:
-                 st.session_state.audio_to_play = msg
+            send_response(st, msg, audio_required)
             return
 
     last_message = st.session_state.messages[-1]
@@ -68,9 +59,7 @@ def verfuegbarkeit_pruefen(st, audio_required: bool = False):
         
         if st.session_state.availability_step == "ask_title":
             response = check_existence_logic(user_text, books_data, availability_flow)
-            st.session_state.messages.append({"role": "assistant", "content": response})
-            if audio_required:
-                st.session_state.audio_to_play = response
+            send_response(st, response, audio_required)
             
             st.session_state.availability_step = None
             st.session_state.current_flow = None

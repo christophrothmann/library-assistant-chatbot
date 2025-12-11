@@ -1,7 +1,7 @@
 import os
 import random
 
-from services.utils import load_json
+from services.utils import load_json, send_response
 
 
 def search_books(keyword, books_data):
@@ -45,8 +45,6 @@ def buchsuche(st, audio_required: bool = False):
 
     if "buchsuche_step" not in st.session_state or not st.session_state.messages:
         
-        # Context Check
-        # If we came from intent classifier with input, use that as query.
         initial_query = None
         if st.session_state.messages and st.session_state.messages[-1]["role"] == "user":
              initial_query = st.session_state.messages[-1]["content"]
@@ -62,10 +60,7 @@ def buchsuche(st, audio_required: bool = False):
                 msg_template = random.choice(search_flow['no_results'])
                 response = msg_template.format(keyword=initial_query)
             
-            st.session_state.messages.append({"role": "assistant", "content": response})
-            
-            if audio_required:
-                st.session_state.audio_to_play = response
+            send_response(st, response, audio_required)
             
        
             st.session_state.buchsuche_step = None
@@ -75,9 +70,8 @@ def buchsuche(st, audio_required: bool = False):
         st.session_state.buchsuche_step = "ask_keyword"
         
         msg = random.choice(search_flow['ask_keyword'])
-        st.session_state.messages.append({"role": "assistant", "content": msg})
-        if audio_required:
-             st.session_state.audio_to_play = msg
+        msg = random.choice(search_flow['ask_keyword'])
+        send_response(st, msg, audio_required)
         return
 
     last_message = st.session_state.messages[-1]
@@ -96,11 +90,7 @@ def buchsuche(st, audio_required: bool = False):
                 msg_template = random.choice(search_flow['no_results'])
                 response = msg_template.format(keyword=user_text)
             
-            st.session_state.messages.append({"role": "assistant", "content": response})
+            send_response(st, response, audio_required)
             
-            if audio_required:
-                st.session_state.audio_to_play = response
-            
-            # End flow after showing results
             st.session_state.buchsuche_step = None
             st.session_state.current_flow = None

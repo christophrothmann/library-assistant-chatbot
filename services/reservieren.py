@@ -1,8 +1,9 @@
+import json
 import os
 import random
 from datetime import datetime, timedelta
 
-from services.utils import load_json, find_book_in_text
+from services.utils import load_json, get_initial_context, send_response
 
 
 def save_json(filepath, data):
@@ -37,11 +38,37 @@ def calculate_reservation_dates(book, duration_days=3):
         "end": end_date
     }
 
+def process_reservation_confirmation(user_text, book_to_update, new_dates, books_data, books_file, flow_data):
+    """
+    Processes the user's confirmation for a reservation.
+    Returns the appropriate response message.
+    """
+    text_lower = user_text.lower()
+    
+    if any(x in text_lower for x in ["ja", "bestätigen", "gerne", "ok", "jup"]):
+        for book in books_data:
+            if book['title'] == book_to_update['title']:
+                book['available_from'] = new_dates['end'].strftime("%Y-%m-%d")
+                break
+        
+        save_json(books_file, books_data)
+        
+        return random.choice(flow_data['success']).format(
+            title=book_to_update['title'],
+            start_date=new_dates['start'].strftime("%d.%m.%Y"),
+            end_date=new_dates['end'].strftime("%d.%m.%Y")
+        ), True
+        
+    elif any(x in text_lower for x in ["nein", "no", "abbruch", "nicht"]):
+        return random.choice(flow_data['cancel']), True
+        
+    else:
+        return random.choice(flow_data['clarify_confirmation']), False
+
 def reservieren(st, audio_required: bool = False):
     """
     Main Function for 'Buch reservieren' flow.
     """
-    # Load Data
     books_file = os.path.join("assets", "buecher_bestand.json")
     dialogue_file = os.path.join("assets", "reservieren.json")
     
@@ -50,10 +77,7 @@ def reservieren(st, audio_required: bool = False):
 
     if "reservation_step" not in st.session_state or not st.session_state.messages:
         
-        initial_book_context = None
-        if st.session_state.messages and st.session_state.messages[-1]["role"] == "user":
-             user_text = st.session_state.messages[-1]["content"]
-             initial_book_context = find_book_in_text(user_text, books_data)
+        initial_book_context = get_initial_context(st, books_data)
         
         if initial_book_context:
              st.session_state.reservation_book = initial_book_context
@@ -76,9 +100,7 @@ def reservieren(st, audio_required: bool = False):
                   msg_template = random.choice(dialogue_flow['confirm_unavailable'])
                      
              msg = msg_template.format(title=found_book['title'], start_date=start_str, end_date=end_str)
-             st.session_state.messages.append({"role": "assistant", "content": msg})
-             if audio_required:
-                 st.session_state.audio_to_play = msg
+             send_response(st, msg, audio_required)
              return
 
         st.session_state.reservation_step = "ask_title"
@@ -86,9 +108,7 @@ def reservieren(st, audio_required: bool = False):
         st.session_state.reservation_dates = None
         
         msg = random.choice(dialogue_flow['ask_title'])
-        st.session_state.messages.append({"role": "assistant", "content": msg})
-        if audio_required:
-            st.session_state.audio_to_play = msg
+        send_response(st, msg, audio_required)
         return
 
     last_message = st.session_state.messages[-1]
@@ -123,56 +143,27 @@ def reservieren(st, audio_required: bool = False):
                      msg_template = random.choice(dialogue_flow['confirm_unavailable'])
                      
                 msg = msg_template.format(title=found_book['title'], start_date=start_str, end_date=end_str)
-                st.session_state.messages.append({"role": "assistant", "content": msg})
-                if audio_required:
-                    st.session_state.audio_to_play = msg
+                send_response(st, msg, audio_required)
                 
             else:
                 # Buch nicht gefunden
                 msg = random.choice(dialogue_flow['book_not_found']).format(title=user_text)
-                st.session_state.messages.append({"role": "assistant", "content": msg})
-                if audio_required:
-                    st.session_state.audio_to_play = msg
+                send_response(st, msg, audio_required)
                 
         # Reservierung bestätigen
         elif st.session_state.reservation_step == "confirm_dates":
-            text_lower = user_text.lower()
-            if any(x in text_lower for x in ["ja", "bestätigen", "gerne", "ok", "jup"]):
-                book_to_update = st.session_state.reservation_book
-                new_dates = st.session_state.reservation_dates
-                
-
-                for book in books_data:
-                    if book['title'] == book_to_update['title']:
-                        book['available_from'] = new_dates['end'].strftime("%Y-%m-%d")
-                        break
-                
-                save_json(books_file, books_data)
-                
-                msg = random.choice(dialogue_flow['success']).format(
-                    title=book_to_update['title'],
-                    start_date=new_dates['start'].strftime("%d.%m.%Y"),
-                    end_date=new_dates['end'].strftime("%d.%m.%Y")
-                )
-                st.session_state.messages.append({"role": "assistant", "content": msg})
-                if audio_required:
-                    st.session_state.audio_to_play = msg
-                
+            msg, finished = process_reservation_confirmation(
+                user_text, 
+                st.session_state.reservation_book, 
+                st.session_state.reservation_dates, 
+                books_data, 
+                books_file, 
+                dialogue_flow
+            )
+            
+            send_response(st, msg, audio_required)
+            
+            if finished:
                 st.session_state.reservation_step = None
                 st.session_state.current_flow = None
                 st.session_state.reservation_book = None
-                
-            elif any(x in text_lower for x in ["nein", "no", "abbruch", "nicht"]):
-                msg = random.choice(dialogue_flow['cancel'])
-                st.session_state.messages.append({"role": "assistant", "content": msg})
-                if audio_required:
-                    st.session_state.audio_to_play = msg
-                
-                st.session_state.reservation_step = None
-                st.session_state.current_flow = None
-                st.session_state.reservation_book = None
-            else:
-                msg = random.choice(dialogue_flow['clarify_confirmation'])
-                st.session_state.messages.append({"role": "assistant", "content": msg})
-                if audio_required:
-                    st.session_state.audio_to_play = msg

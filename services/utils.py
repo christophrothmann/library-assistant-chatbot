@@ -32,3 +32,23 @@ def find_book_in_text(text, books_data):
             break
             
     return found_book
+
+def get_initial_context(st, books_data):
+    """
+    Checks the last user message for a book title using find_book_in_text.
+    Returns the book object or None.
+    """
+    initial_book_context = None
+    if st.session_state.messages and st.session_state.messages[-1]["role"] == "user":
+         user_text = st.session_state.messages[-1]["content"]
+         initial_book_context = find_book_in_text(user_text, books_data)
+    return initial_book_context
+
+def send_response(st, message, audio_required=False):
+    """
+    Appends the message to session state and sets audio to play if required.
+    """
+    st.session_state.messages.append({"role": "assistant", "content": message})
+    if audio_required:
+        st.session_state.audio_to_play = message
+

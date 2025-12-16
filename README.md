@@ -21,18 +21,19 @@ pip install -r requirements.txt
 
 Weitere Beschreibungen
 
-Verwendete Versionen:
+Verwendete Bibliotheken:
 
-- Python 3.13.5
-- streamlit 1.51.0
-- nltk 3.9.2
-- speechrecognition 3.10.0
-- elevenlabs 0.1.1
+Hier eine knappe Übersicht der verwendeten Bibliotheken und deren Nutzen
+- Python - Grundlegende Programmierlogik
+- streamlit - Für die erstellung der Weboberfläche
+- nltk - zum erkennen der Intention des Nutzers
+- speechrecognition - Für die Spracheingabe
+- edge_tts - Für die Sprachausgabe
 
 # Basic Usage
 Schrittanleitung:
 1. Installationsscript ausführen (siehe weiter oben)
-2. Streamlitstarten:
+2. Streamlit starten:
 
 ```bash
 streamlit run app.py

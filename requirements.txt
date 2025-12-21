@@ -12,7 +12,7 @@ cachetools==6.2.2
 certifi==2025.11.12
 charset-normalizer==3.4.4
 click==8.3.1
-edge-tts==7.2.3
+edge-tts==7.2.7
 elevenlabs==2.24.0
 frozenlist==1.8.0
 gitdb==4.0.12

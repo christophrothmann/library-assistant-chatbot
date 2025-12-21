@@ -80,7 +80,17 @@ def main():
 
         if not st.session_state.get("current_flow"):
             classified_intent = classify_intent(user_text)
-            if classified_intent:
+            if classified_intent == "capabilities":
+                response = "Ich kann so einiges. Ich kann die Verfügbarkeit von Büchern prüfen, Bücher reservieren, Bücher lokalisieren und nach Text in Büchern suchen. Sag mir einfach, was du tun möchtest!"
+                st.session_state.messages.append({"role": "assistant", "content": response})
+                if st.session_state.get("audio_enabled", False):
+                     st.session_state.audio_to_play = response
+            elif classified_intent == "greeting":
+                response = "Hallo! Ich bin Goleo. Wie kann ich dir behilflich sein?"
+                st.session_state.messages.append({"role": "assistant", "content": response})
+                if st.session_state.get("audio_enabled", False):
+                     st.session_state.audio_to_play = response
+            elif classified_intent:
                 st.session_state.current_flow = classified_intent
 
         should_speak = st.session_state.get("audio_enabled", False)

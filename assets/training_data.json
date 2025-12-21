@@ -20,6 +20,22 @@
         "verfuegbarkeit_pruefen"
     ],
     [
+        "Ist ein Buch verfügbar?",
+        "verfuegbarkeit_pruefen"
+    ],
+    [
+        "Kannst du schauen ob ein Buch da ist?",
+        "verfuegbarkeit_pruefen"
+    ],
+    [
+        "Verfügbarkeit prüfen",
+        "verfuegbarkeit_pruefen"
+    ],
+    [
+        "Buchstatus checken",
+        "verfuegbarkeit_pruefen"
+    ],
+    [
         "Konsumentenverhalten von Kroeber-Riel",
         "reservieren"
     ],
@@ -40,6 +56,26 @@
         "reservieren"
     ],
     [
+        "Ich möchte ein Buch reservieren",
+        "reservieren"
+    ],
+    [
+        "Buch reservieren bitte",
+        "reservieren"
+    ],
+    [
+        "Kann ich ein Buch zurücklegen lassen?",
+        "reservieren"
+    ],
+    [
+        "Ich würde gerne was ausleihen",
+        "reservieren"
+    ],
+    [
+        "Reservierung starten",
+        "reservieren"
+    ],
+    [
         "Ich bin gerade in der Bibliothek, aber ich finde das Regal für Maschinenbau nicht. Es ist riesig hier.",
         "regalsuche"
     ],
@@ -49,6 +85,22 @@
     ],
     [
         "Standorte für: \"Kostenrechnung\" (Coenenberg) und \"Bilanzierung\" (Baetge).",
+        "regalsuche"
+    ],
+    [
+        "Wo finde ich ein Buch?",
+        "regalsuche"
+    ],
+    [
+        "Ich suche den Standort eines Buches",
+        "regalsuche"
+    ],
+    [
+        "Buch lokalisieren",
+        "regalsuche"
+    ],
+    [
+        "In welchem Regal steht das Buch?",
         "regalsuche"
     ],
     [
@@ -64,7 +116,59 @@
         "buchsuche"
     ],
     [
+        "Ich suche Bücher zu einem Thema",
+        "buchsuche"
+    ],
+    [
+        "Textsuche in Büchern",
+        "buchsuche"
+    ],
+    [
+        "Literaturrecherche",
+        "buchsuche"
+    ],
+    [
+        "Hast du Bücher über ein bestimmtes Thema?",
+        "buchsuche"
+    ],
+    [
         "In welchem Buch finde ich das \"4-Ohren-Modell\"?",
         "buchsuche"
+    ],
+    [
+        "Was kannst du alles machen?",
+        "capabilities"
+    ],
+    [
+        "Was kannst du?",
+        "capabilities"
+    ],
+    [
+        "Hilfe",
+        "capabilities"
+    ],
+    [
+        "Welche Funktionen hast du?",
+        "capabilities"
+    ],
+    [
+        "Zeig mir, was du kannst.",
+        "capabilities"
+    ],
+    [
+        "Hallo",
+        "greeting"
+    ],
+    [
+        "Hi",
+        "greeting"
+    ],
+    [
+        "Hey",
+        "greeting"
+    ],
+    [
+        "Guten Tag",
+        "greeting"
     ]
 ]

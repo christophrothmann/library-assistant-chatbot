@@ -13,19 +13,16 @@ import time
 from datetime import timedelta
 
 
-# --- Configuration & Setup ---
-st.set_page_config(page_title="Goleo - Der Bibliotheksassistent", page_icon="./assets/goleo.png")
+st.set_page_config(page_title="Goleo - Dein Bibliotheksassistent", page_icon="./assets/goleo.png")
 
-# --- Main App ---
 def main():
     st.title("Goleo - Dein Bibliotheksassistent")
 
-    # Initialize Session State
     if "messages" not in st.session_state:
         st.session_state.messages = []
     
     if "current_flow" not in st.session_state:
-        st.session_state.current_flow = None # None, 'availability', etc.
+        st.session_state.current_flow = None
     
     if "step" not in st.session_state:
         st.session_state.step = None
@@ -75,23 +72,17 @@ def main():
         st.divider()
         st.checkbox("Audioausgabe aktivieren", key="audio_enabled")
 
-    # Helper to process user input
     def process_input(user_text, used_mic: bool = False):
         if not user_text:
             return
         
         st.session_state.messages.append({"role": "user", "content": user_text})
 
-        # If no flow is active, try to classify intent
         if not st.session_state.get("current_flow"):
             classified_intent = classify_intent(user_text)
-            # Only switch if a valid intent is found (assuming classifier always returns something, 
-            # but we might want to handle 'None' if we had a fallback, 
-            # currently it forces one of the known intents)
             if classified_intent:
                 st.session_state.current_flow = classified_intent
 
-        # Dispatch to the active flow
         should_speak = st.session_state.get("audio_enabled", False)
         
         if st.session_state.get("current_flow") == "verfuegbarkeit_pruefen":
@@ -104,37 +95,31 @@ def main():
              buchsuche(st, should_speak)
         
         
-    # --- Welcome Screen ---
     if not st.session_state.messages:
         st.markdown("""
         Hallo! Ich bin **Goleo**, dein Assistent für die Bibliothek.
         Wähle eine Aktion aus der Sidebar, um zu starten oder verwende die Text- /Spracheingabe.
         """)
 
-    # --- Pre-calculate Audio (Synchronization) ---
     audio_path_to_play = None
     if st.session_state.get("audio_to_play"):
         with st.spinner("Generiere Antwort..."):
             audio_path_to_play = generate_audio(st.session_state.audio_to_play)
         st.session_state.audio_to_play = None
 
-    # --- Chat History Display ---
     for message in st.session_state.messages:
         with st.chat_message(message["role"]):
             st.markdown(message["content"])
 
-    # --- Input Area ---
-    # Layout: [Text Input] [Mic Button]
     st.divider()
     input_col, mic_col = st.columns([8, 1])
     
     with input_col:
-        # Callback to handle "Enter" key
         def on_text_submit():
             txt = st.session_state.user_input_widget
             if txt:
                 process_input(txt, used_mic=False)
-                st.session_state.user_input_widget = "" # Clear input
+                st.session_state.user_input_widget = ""
 
         st.text_input(
             "Nachricht", 
@@ -145,14 +130,12 @@ def main():
         )
 
     with mic_col:
-        # Use Material Icon
         if st.button("", icon=":material/mic:"):
             transcribed_text = listen_and_transcribe(st)
             if transcribed_text:
                 process_input(transcribed_text, used_mic=True)
                 st.rerun()
 
-    # --- Audio Playback (Synchronized) ---
     if audio_path_to_play:
         play_audio(audio_path_to_play)
 

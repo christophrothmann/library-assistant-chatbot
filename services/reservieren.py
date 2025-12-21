@@ -65,7 +65,7 @@ def process_reservation_confirmation(user_text, book_to_update, new_dates, books
     else:
         return random.choice(flow_data['clarify_confirmation']), False
 
-def reservieren(st, audio_required: bool = False):
+def reservieren(st, audio_output_required: bool = False):
     """
     Main Function for 'Buch reservieren' flow.
     """
@@ -100,7 +100,7 @@ def reservieren(st, audio_required: bool = False):
                   msg_template = random.choice(dialogue_flow['confirm_unavailable'])
                      
              msg = msg_template.format(title=found_book['title'], start_date=start_str, end_date=end_str)
-             send_response(st, msg, audio_required)
+             send_response(st, msg, audio_output_required)
              return
 
         st.session_state.reservation_step = "ask_title"
@@ -108,7 +108,7 @@ def reservieren(st, audio_required: bool = False):
         st.session_state.reservation_dates = None
         
         msg = random.choice(dialogue_flow['ask_title'])
-        send_response(st, msg, audio_required)
+        send_response(st, msg, audio_output_required)
         return
 
     last_message = st.session_state.messages[-1]
@@ -143,12 +143,12 @@ def reservieren(st, audio_required: bool = False):
                      msg_template = random.choice(dialogue_flow['confirm_unavailable'])
                      
                 msg = msg_template.format(title=found_book['title'], start_date=start_str, end_date=end_str)
-                send_response(st, msg, audio_required)
+                send_response(st, msg, audio_output_required)
                 
             else:
                 # Buch nicht gefunden
                 msg = random.choice(dialogue_flow['book_not_found']).format(title=user_text)
-                send_response(st, msg, audio_required)
+                send_response(st, msg, audio_output_required)
                 
         # Reservierung bestätigen
         elif st.session_state.reservation_step == "confirm_dates":
@@ -161,7 +161,7 @@ def reservieren(st, audio_required: bool = False):
                 dialogue_flow
             )
             
-            send_response(st, msg, audio_required)
+            send_response(st, msg, audio_output_required)
             
             if finished:
                 st.session_state.reservation_step = None

@@ -31,7 +31,7 @@ def format_results(matches):
         result_str += f"{i}. **{book['title']}** von {book['author']}\n   _{book['summary']}_\n\n"
     return result_str
 
-def buchsuche(st, audio_required: bool = False):
+def buchsuche(st, audio_output_required: bool = False):
     """
     Main Function after intent classification for 'Buchsuche'.
     Manages the flow state and user interaction.
@@ -60,7 +60,7 @@ def buchsuche(st, audio_required: bool = False):
                 msg_template = random.choice(search_flow['no_results'])
                 response = msg_template.format(keyword=initial_query)
             
-            send_response(st, response, audio_required)
+            send_response(st, response, audio_output_required)
             
        
             st.session_state.buchsuche_step = None
@@ -71,7 +71,7 @@ def buchsuche(st, audio_required: bool = False):
         
         msg = random.choice(search_flow['ask_keyword'])
         msg = random.choice(search_flow['ask_keyword'])
-        send_response(st, msg, audio_required)
+        send_response(st, msg, audio_output_required)
         return
 
     last_message = st.session_state.messages[-1]
@@ -90,7 +90,7 @@ def buchsuche(st, audio_required: bool = False):
                 msg_template = random.choice(search_flow['no_results'])
                 response = msg_template.format(keyword=user_text)
             
-            send_response(st, response, audio_required)
+            send_response(st, response, audio_output_required)
             
             st.session_state.buchsuche_step = None
             st.session_state.current_flow = None

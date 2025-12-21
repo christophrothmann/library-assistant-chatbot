@@ -13,7 +13,7 @@ def format_shelf_location_msg(book, flow_data):
         shelf_height=book['shelf_height']
     )
 
-def regalsuche(st, audio_required: bool = False):
+def regalsuche(st, audio_output_required: bool = False):
     """
     Main Function for 'Buch lokalisieren' flow.
     """
@@ -32,7 +32,7 @@ def regalsuche(st, audio_required: bool = False):
         if initial_book_context:
             found_book = initial_book_context
             msg = format_shelf_location_msg(found_book, dialogue_flow)
-            send_response(st, msg, audio_required)
+            send_response(st, msg, audio_output_required)
 
             st.session_state.regalsuche_step = None
             st.session_state.current_flow = None
@@ -40,7 +40,7 @@ def regalsuche(st, audio_required: bool = False):
         st.session_state.regalsuche_step = "ask_title"
         
         msg = random.choice(dialogue_flow['ask_title'])
-        send_response(st, msg, audio_required)
+        send_response(st, msg, audio_output_required)
         return
 
     last_message = st.session_state.messages[-1]
@@ -57,10 +57,10 @@ def regalsuche(st, audio_required: bool = False):
             
             if found_book:
                 msg = format_shelf_location_msg(found_book, dialogue_flow)
-                send_response(st, msg, audio_required)
+                send_response(st, msg, audio_output_required)
             else:
                 msg = random.choice(dialogue_flow['book_not_found']).format(title=user_text)
-                send_response(st, msg, audio_required)
+                send_response(st, msg, audio_output_required)
             
             st.session_state.regalsuche_step = None
             st.session_state.current_flow = None

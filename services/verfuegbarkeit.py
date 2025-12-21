@@ -1,6 +1,6 @@
 import os
 import random
-
+from services.utils import find_book_in_text
 from services.utils import load_json, get_initial_context, send_response
 
 
@@ -8,11 +8,8 @@ def check_existence_logic(title_query, books_data, flow_data):
     """
     Checks if a book exists in the inventory and returns a random response message.
     """
-    found_book = None
-    for book in books_data:
-        if title_query.lower() in book['title'].lower():
-            found_book = book
-            break
+
+    found_book = find_book_in_text(title_query, books_data)
     
     if found_book:
         msg_template = random.choice(flow_data['book_exists'])
@@ -23,7 +20,7 @@ def check_existence_logic(title_query, books_data, flow_data):
         msg = msg_template.format(title=title_query)
         return msg
 
-def verfuegbarkeit_pruefen(st, audio_required: bool = False):
+def verfuegbarkeit_pruefen(st, audio_output_required: bool = False):
     """
     Main Function after intent classification for 'Verfügbarkeit prüfen'.
     Manages the flow state and user interaction.
@@ -41,7 +38,7 @@ def verfuegbarkeit_pruefen(st, audio_required: bool = False):
         if initial_book_context:
             st.session_state.availability_step = "check_existence"
             response = check_existence_logic(initial_book_context['title'], books_data, availability_flow)
-            send_response(st, response, audio_required)
+            send_response(st, response, audio_output_required)
             
             st.session_state.availability_step = None
             st.session_state.current_flow = None
@@ -49,7 +46,7 @@ def verfuegbarkeit_pruefen(st, audio_required: bool = False):
         else:
             st.session_state.availability_step = "ask_title"
             msg = random.choice(availability_flow['ask_title'])
-            send_response(st, msg, audio_required)
+            send_response(st, msg, audio_output_required)
             return
 
     last_message = st.session_state.messages[-1]
@@ -59,7 +56,7 @@ def verfuegbarkeit_pruefen(st, audio_required: bool = False):
         
         if st.session_state.availability_step == "ask_title":
             response = check_existence_logic(user_text, books_data, availability_flow)
-            send_response(st, response, audio_required)
+            send_response(st, response, audio_output_required)
             
             st.session_state.availability_step = None
             st.session_state.current_flow = None

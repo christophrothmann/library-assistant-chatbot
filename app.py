@@ -1,17 +1,12 @@
-from services.intent_classifier import classify_intent
+import streamlit as st
+
 from services.buchsuche import buchsuche
+from services.intent_classifier import classify_intent
 from services.regalsuche import regalsuche
 from services.reservieren import reservieren
-from services.verfuegbarkeit import verfuegbarkeit_pruefen
 from services.speech_2_text import listen_and_transcribe
 from services.text_2_speech import generate_audio, play_audio
-import streamlit as st
-import json
-import os
-import datetime
-import time
-from datetime import timedelta
-
+from services.verfuegbarkeit import verfuegbarkeit_pruefen
 
 st.set_page_config(page_title="Goleo - Dein Bibliotheksassistent", page_icon="./assets/goleo.png")
 
@@ -42,7 +37,7 @@ def main():
             st.session_state.step = None
             st.session_state.context_book = None
 
-        if st.button(label="Neuer Chat beginnen", use_container_width=True):
+        if st.button(label="Neuen Chat beginnen", use_container_width=True):
             reset_chat()
             st.rerun()    
 
@@ -80,6 +75,7 @@ def main():
 
         if not st.session_state.get("current_flow"):
             classified_intent = classify_intent(user_text)
+            print(f"Klassifizierte Absicht: {classified_intent}")
             if classified_intent == "capabilities":
                 response = "Ich kann so einiges. Ich kann die Verfügbarkeit von Büchern prüfen, Bücher reservieren, Bücher lokalisieren und nach Text in Büchern suchen. Sag mir einfach, was du tun möchtest!"
                 st.session_state.messages.append({"role": "assistant", "content": response})

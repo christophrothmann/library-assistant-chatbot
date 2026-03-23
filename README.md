@@ -1,4 +1,4 @@
-Rothmann Christoph, 22411549
+Rothmann Christoph
 
 Goleo - Der Bibliotheksassistent
 
